@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Source Magazine - Top Mic Ratings</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Load Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Anton&display=swap" rel="stylesheet">
+    <style>
+        /* Base styles */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6; /* Tailwind gray-100 */
+        }
+        
+        /* Custom scrollbar for better aesthetics */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #888; 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555; 
+        }
+    </style>
+</head>
+<body class="text-gray-900 antialiased min-h-screen flex flex-col">
+
+    <header class="bg-white border-b-[6px] border-black pb-8 relative">
+        <div class="bg-black text-white text-center text-xs md:text-sm font-bold uppercase tracking-widest py-1.5 border-b-4 border-red-600">
+            The Magazine of Hip-Hop Music, Culture & Politics
+        </div>
+        
+        <div class="container mx-auto px-4 mt-6 text-center relative max-w-5xl">
+            <!-- Magazine metadata (Issue, Date) -->
+            <div class="hidden md:flex justify-between items-end border-b-4 border-black pb-2 mb-6 px-2">
+                <div class="text-left font-black text-sm uppercase tracking-wider">
+                    <span class="block text-red-600 text-2xl">No. 1</span>
+                    The Archives Issue
+                </div>
+                <div class="text-right flex items-center gap-3">
+                    <div class="text-xs font-bold text-right uppercase leading-tight">
+                        USA $4.95<br>CAN $5.95
+                    </div>
+                    <!-- Fake Barcode -->
+                    <div class="h-12 w-24 bg-white border-2 border-black p-0.5 flex">
+                         <div class="w-full h-full bg-[repeating-linear-gradient(90deg,#000,#000_2px,transparent_2px,transparent_4px,#000_4px,#000_6px,transparent_6px,transparent_9px,#000_9px,#000_10px,transparent_10px,transparent_12px)]"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="relative inline-block mt-4 mb-2 w-full overflow-hidden">
+                <h1 class="text-[5rem] sm:text-[7rem] md:text-[9rem] leading-none font-normal tracking-tight text-red-600 uppercase" style="font-family: 'Anton', sans-serif; transform: scaleY(1.15);">
+                    The Source
+                </h1>
+            </div>
+            
+            <div class="mt-4">
+                <h2 class="text-2xl md:text-4xl font-black tracking-tighter text-black uppercase bg-yellow-400 inline-block px-6 py-2 border-4 border-black shadow-[4px_4px_0_0_#000] transform -rotate-2">
+                    Mic Ratings Archive
+                </h2>
+            </div>
+            
+            <p class="text-black text-lg md:text-xl max-w-2xl mx-auto mt-10 font-bold border-t-4 border-b-4 border-black py-4 uppercase tracking-wide">
+                A comprehensive archive of classic hip-hop albums ranked by their legendary mic ratings.
+            </p>
+            
+            <div class="mt-10">
+                <a href="https://archive.org/search?query=creator%3A%22The+Source%22&tab=texts" target="_blank" rel="noopener noreferrer" class="inline-block bg-black text-white text-sm md:text-base font-black uppercase tracking-widest py-3 px-8 border-4 border-black hover:bg-red-600 hover:text-white transition duration-200 shadow-[6px_6px_0px_0px_rgba(0,0,0,0.2)]">
+                    Explore Original Magazines
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-grow container mx-auto px-4 py-8">
+        <section class="bg-white rounded-xl shadow-sm p-6 mb-8 border border-gray-200">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                
+                <!-- Search by Artist -->
+                <div>
+                    <label for="searchArtist" class="block text-sm font-semibold text-gray-700 mb-1">Search by Artist</label>
+                    <input type="text" id="searchArtist" placeholder="e.g. Nas, Wu-Tang Clan..." class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-black focus:border-black outline-none transition">
+                </div>
+
+                <!-- Search by Album -->
+                <div>
+                    <label for="searchAlbum" class="block text-sm font-semibold text-gray-700 mb-1">Search by Album</label>
+                    <input type="text" id="searchAlbum" placeholder="e.g. Illmatic, The Chronic..." class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-black focus:border-black outline-none transition">
+                </div>
+
+                <!-- Filter by Mic Rating -->
+                <div>
+                    <label for="filterMic" class="block text-sm font-semibold text-gray-700 mb-1">Filter by Mics</label>
+                    <select id="filterMic" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-black focus:border-black outline-none transition bg-white cursor-pointer">
+                        <option value="all">All Ratings</option>
+                        <option value="5">5 Mics (Classic)</option>
+                        <option value="4.5">4.5 Mics (Near Classic)</option>
+                        <option value="4">4 Mics (Slammin')</option>
+                        <option value="3.5">3.5 Mics (Dope)</option>
+                        <option value="3">3 Mics (Solid)</option>
+                        <option value="2.5">2.5 Mics (Subpar)</option>
+                        <option value="2">2 Mics (Weak)</option>
+                    </select>
+                </div>
+            </div>
+        </section>
+
+        <section id="albumGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            <!-- Album cards will be dynamically injected here by JavaScript -->
+        </section>
+
+        <!-- No results message -->
+        <div id="noResults" class="hidden text-center py-12 text-gray-500 text-lg">
+            No albums found matching your criteria. Try adjusting your search.
+        </div>
+        <script>
+        // Database of albums, categorized roughly by their original or re-rated mic status
+        // Note: Ratings reflect common historical consensus from The Source. 
+        // 5 Mics = Classic, 4.5 Mics = Near Classic, 4 Mics = Slammin'
+        const albums = [
+            // 5 Mics (Original & Later Re-rated)
+            { artist: "2Pac", title: "All Eyez on Me", mics: 5, year: 1996 },
+            { artist: "2Pac", title: "Me Against the World", mics: 5, year: 1995 }, // Re-rated to 5
+            { artist: "A Tribe Called Quest", title: "People's Instinctive Travels and the Paths of Rhythm", mics: 5, year: 1990 },
+            { artist: "A Tribe Called Quest", title: "The Low End Theory", mics: 5, year: 1991 },
+            { artist: "Beastie Boys", title: "Licensed to Ill", mics: 5, year: 1986 },
+            { artist: "Big Daddy Kane", title: "Long Live the Kane", mics: 5, year: 1988 },
+            { artist: "Boogie Down Productions", title: "By All Means Necessary", mics: 5, year: 1988 },
+            { artist: "Boogie Down Productions", title: "Criminal Minded", mics: 5, year: 1987 },
+            { artist: "Boogie Down Productions", title: "Edutainment", mics: 5, year: 1990 },
+            { artist: "Brand Nubian", title: "One for All", mics: 5, year: 1990 },
+            { artist: "Bun B", title: "Trill OG", mics: 5, year: 2010 },
+            { artist: "De La Soul", title: "De La Soul Is Dead", mics: 5, year: 1991 },
+            { artist: "Dr. Dre", title: "2001", mics: 5, year: 1999 }, // Re-rated to 5
+            { artist: "Dr. Dre", title: "The Chronic", mics: 5, year: 1992 }, // Re-rated to 5
+            { artist: "EPMD", title: "Strictly Business", mics: 5, year: 1988 },
+            { artist: "Eric B. & Rakim", title: "Let the Rhythm Hit 'Em", mics: 5, year: 1990 },
+            { artist: "Eric B. & Rakim", title: "Paid in Full", mics: 5, year: 1987 },
+            { artist: "Geto Boys", title: "Grip It! On That Other Level", mics: 5, year: 1989 }, // Re-rated to 5
+            { artist: "Ice Cube", title: "AmeriKKKa's Most Wanted", mics: 5, year: 1990 },
+            { artist: "Ice Cube", title: "Death Certificate", mics: 5, year: 1991 }, // Re-rated to 5
+            { artist: "Jay-Z", title: "Reasonable Doubt", mics: 5, year: 1996 }, // Re-rated to 5
+            { artist: "Jay-Z", title: "The Blueprint", mics: 5, year: 2001 },
+            { artist: "Jungle Brothers", title: "Straight out the Jungle", mics: 5, year: 1988 },
+            { artist: "Kanye West", title: "My Beautiful Dark Twisted Fantasy", mics: 5, year: 2010 },
+            { artist: "Lil' Kim", title: "The Naked Truth", mics: 5, year: 2005 },
+            { artist: "LL Cool J", title: "Radio", mics: 5, year: 1985 },
+            { artist: "Main Source", title: "Breaking Atoms", mics: 5, year: 1991 }, // Re-rated to 5
+            { artist: "Makaveli", title: "The Don Killuminati: The 7 Day Theory", mics: 5, year: 1996 },
+            { artist: "Mobb Deep", title: "The Infamous", mics: 5, year: 1995 }, // Re-rated to 5
+            { artist: "N.W.A", title: "Straight Outta Compton", mics: 5, year: 1988 },
+            { artist: "Nas", title: "Illmatic", mics: 5, year: 1994 },
+            { artist: "Nas", title: "Stillmatic", mics: 5, year: 2001 },
+            { artist: "OutKast", title: "Aquemini", mics: 5, year: 1998 },
+            { artist: "Public Enemy", title: "It Takes a Nation of Millions to Hold Us Back", mics: 5, year: 1988 },
+            { artist: "Raekwon", title: "Only Built 4 Cuban Linx...", mics: 5, year: 1995 }, // Re-rated to 5
+            { artist: "Run-D.M.C.", title: "Raising Hell", mics: 5, year: 1986 },
+            { artist: "Run-D.M.C.", title: "Run-D.M.C.", mics: 5, year: 1984 },
+            { artist: "Scarface", title: "The Diary", mics: 5, year: 1994 }, // Re-rated to 5
+            { artist: "Scarface", title: "The Fix", mics: 5, year: 2002 },
+            { artist: "Slick Rick", title: "The Great Adventures of Slick Rick", mics: 5, year: 1988 },
+            { artist: "Snoop Doggy Dogg", title: "Doggystyle", mics: 5, year: 1993 }, // Re-rated to 5
+            { artist: "The D.O.C.", title: "No One Can Do It Better", mics: 5, year: 1989 },
+            { artist: "The Fugees", title: "The Score", mics: 5, year: 1996 }, // Re-rated to 5
+            { artist: "The Notorious B.I.G.", title: "Life After Death", mics: 5, year: 1997 },
+            { artist: "The Notorious B.I.G.", title: "Ready to Die", mics: 5, year: 1994 }, // Re-rated to 5
+            { artist: "Ultramagnetic MCs", title: "Critical Beatdown", mics: 5, year: 1988 },
+            { artist: "Wu-Tang Clan", title: "Enter the Wu-Tang (36 Chambers)", mics: 5, year: 1993 }, // Re-rated to 5
+
+            // 4.5 Mics (Notable entries)
+            { artist: "Beanie Sigel", title: "The Truth", mics: 4.5, year: 2000 },
+            { artist: "Boogie Down Productions", title: "Sex And Violence", mics: 4.5, year: 1992 },
+            { artist: "De La Soul", title: "Buhloone Mindstate", mics: 4.5, year: 1993 },
+            { artist: "EPMD", title: "Business Never Personal", mics: 4.5, year: 1992 },
+            { artist: "Gang Starr", title: "Moment of Truth", mics: 4.5, year: 1998 },
+            { artist: "Ghostface Killah", title: "Bulletproof Wallets", mics: 4.5, year: 2001 },
+            { artist: "Ghostface Killah", title: "Supreme Clientele", mics: 4.5, year: 2000 },
+            { artist: "Hot Boy$", title: "Guerilla Warfare", mics: 4.5, year: 1999 },
+            { artist: "Jay-Z", title: "The Dynasty: Roc La Familia", mics: 4.5, year: 2000 },
+            { artist: "Jay-Z", title: "Vol. 2... Hard Knock Life", mics: 4.5, year: 1998 },
+            { artist: "Kool G Rap & DJ Polo", title: "Killer Kuts", mics: 4.5, year: 1994 },
+            { artist: "Made Men", title: "Classic Limited Edition", mics: 4.5, year: 1999 },
+            { artist: "Mobb Deep", title: "Hell On Earth", mics: 4.5, year: 1996 },
+            { artist: "Mobb Deep", title: "Murda Muzik", mics: 4.5, year: 1999 },
+            { artist: "Nas", title: "I Am...", mics: 4.5, year: 1999 },
+            { artist: "OutKast", title: "Southernplayalisticadillacmuzik", mics: 4.5, year: 1994 },
+            { artist: "Redman", title: "Whut? Thee Album", mics: 4.5, year: 1992 },
+            { artist: "Scarface", title: "Last of a Dying Breed", mics: 4.5, year: 2000 },
+            { artist: "The Roots", title: "Illadelph Halflife", mics: 4.5, year: 1996 },
+            { artist: "Westside Connection", title: "Bow Down", mics: 4.5, year: 1996 },
+            { artist: "Wyclef Jean", title: "The Ecleftic: 2 Sides II a Book", mics: 4.5, year: 2000 },
+
+            // 4 Mics (Selection of notable 4 mic albums)
+            { artist: "8Ball", title: "Lost", mics: 4, year: 1998 },
+            { artist: "8Ball/MJG", title: "In Our Lifetime", mics: 4, year: 1999 },
+            { artist: "A Tribe Called Quest", title: "Beats, Rhymes and Life", mics: 4, year: 1996 },
+            { artist: "A Tribe Called Quest", title: "Midnight Marauders", mics: 4, year: 1993 },
+            { artist: "AZ", title: "Doe or Die", mics: 4, year: 1995 },
+            { artist: "Big Pun", title: "Capital Punishment", mics: 4, year: 1998 },
+            { artist: "Black Moon", title: "Enta da Stage", mics: 4, year: 1993 },
+            { artist: "Busta Rhymes", title: "The Coming", mics: 4, year: 1996 },
+            { artist: "Capone-N-Noreaga", title: "The War Report", mics: 4, year: 1997 },
+            { artist: "Common", title: "Like Water for Chocolate", mics: 4, year: 2000 },
+            { artist: "Cypress Hill", title: "Cypress Hill", mics: 4, year: 1991 },
+            { artist: "De La Soul", title: "Stakes Is High", mics: 4, year: 1996 },
+            { artist: "DMX", title: "It's Dark and Hell Is Hot", mics: 4, year: 1998 },
+            { artist: "Eminem", title: "The Marshall Mathers LP", mics: 4, year: 2000 },
+            { artist: "Fat Joe", title: "Jealous One's Envy", mics: 4, year: 1995 },
+            { artist: "Ghostface Killah", title: "Ironman", mics: 4, year: 1996 },
+            { artist: "Goodie Mob", title: "Soul Food", mics: 4, year: 1995 },
+            { artist: "GZA", title: "Liquid Swords", mics: 4, year: 1995 },
+            { artist: "Ice Cube", title: "Lethal Injection", mics: 4, year: 1993 },
+            { artist: "KRS-One", title: "Return of the Boom Bap", mics: 4, year: 1993 },
+            { artist: "LL Cool J", title: "Mama Said Knock You Out", mics: 4, year: 1990 },
+            { artist: "Method Man & Redman", title: "Blackout!", mics: 4, year: 1999 },
+            { artist: "Mos Def", title: "Black on Both Sides", mics: 4, year: 1999 },
+            { artist: "Nas", title: "It Was Written", mics: 4, year: 1996 },
+            { artist: "Naughty by Nature", title: "Naughty by Nature", mics: 4, year: 1991 },
+            { artist: "OutKast", title: "ATLiens", mics: 4, year: 1996 },
+            { artist: "OutKast", title: "Stankonia", mics: 4, year: 2000 },
+            { artist: "Pete Rock & C.L. Smooth", title: "Mecca and the Soul Brother", mics: 4, year: 1992 },
+            { artist: "Redman", title: "Muddy Waters", mics: 4, year: 1996 },
+            { artist: "Slick Rick", title: "The Art of Storytelling", mics: 4, year: 1999 },
+            { artist: "Snoop Dogg", title: "No Limit Top Dogg", mics: 4, year: 1999 },
+            { artist: "The Pharcyde", title: "Labcabincalifornia", mics: 4, year: 1995 },
+            { artist: "The Roots", title: "Things Fall Apart", mics: 4, year: 1999 },
+            { artist: "Wu-Tang Clan", title: "Iron Flag", mics: 4, year: 2001 },
+            { artist: "Chubb Rock", title: "The One", mics: 4, year: 1991 },
+            { artist: "KMD", title: "Mr. Hood", mics: 4, year: 1991 },
+            { artist: "Boogie Down Productions", title: "Live Hardcore Worldwide", mics: 4, year: 1991 },
+            { artist: "Terminator X", title: "The Valley of the Jeep Beets", mics: 4, year: 1991 },
+            { artist: "Leaders of the New School", title: "A Future Without a Past", mics: 4, year: 1991 },
+            { artist: "Nice & Smooth", title: "Ain't a Damn Thing Changed", mics: 4, year: 1991 },
+            { artist: "Poor Righteous Teachers", title: "Pure Poverty", mics: 4, year: 1991 },
+            { artist: "MC Lyte", title: "Act Like You Know", mics: 4, year: 1991 },
+            { artist: "Public Enemy", title: "Apocalypse 91... The Enemy Strikes Black", mics: 4, year: 1991 },
+            { artist: "Scarface", title: "Mr. Scarface Is Back", mics: 4, year: 1991 },
+            { artist: "Black Sheep", title: "A Wolf in Sheep's Clothing", mics: 4, year: 1991 },
+            { artist: "Del the Funky Homosapien", title: "I Wish My Brother George Was Here", mics: 4, year: 1991 },
+            { artist: "Organized Konfusion", title: "Organized Konfusion", mics: 4, year: 1991 },
+            { artist: "Brand Nubian", title: "In God We Trust", mics: 4, year: 1993 },
+            { artist: "Grand Puba", title: "Reel to Reel", mics: 4, year: 1992 },
+            { artist: "Showbiz & A.G.", title: "Runaway Slave", mics: 4, year: 1992 },
+            { artist: "Ultramagnetic MCs", title: "Funk Your Head Up", mics: 4, year: 1992 },
+            { artist: "Das EFX", title: "Dead Serious", mics: 4, year: 1992 },
+            { artist: "Spice 1", title: "Spice 1", mics: 4, year: 1992 },
+            { artist: "DJ Quik", title: "Way 2 Fonky", mics: 4, year: 1992 },
+            { artist: "Eric B. & Rakim", title: "Don't Sweat the Technique", mics: 4, year: 1992 },
+            { artist: "Too $hort", title: "Shorty the Pimp", mics: 4, year: 1992 },
+            { artist: "Da Lench Mob", title: "Guerillas in tha Mist", mics: 4, year: 1992 },
+            { artist: "Diamond D", title: "Stunts, Blunts and Hip Hop", mics: 4, year: 1992 },
+            { artist: "Positive K", title: "The Skills Dat Pay Da Bills", mics: 4, year: 1992 },
+            { artist: "Leaders of the New School", title: "T.I.M.E.", mics: 4, year: 1993 },
+            { artist: "Too $hort", title: "Get in Where You Fit In", mics: 4, year: 1993 },
+            { artist: "Del the Funky Homosapien", title: "No Need for Alarm", mics: 4, year: 1993 },
+            { artist: "Big Mike", title: "Somethin' Serious", mics: 4, year: 1994 },
+            { artist: "Shyheim", title: "AKA the Rugged Child", mics: 4, year: 1994 },
+            { artist: "Casual", title: "Fear Itself", mics: 4, year: 1994 },
+            { artist: "Gang Starr", title: "Hard to Earn", mics: 4, year: 1994 },
+            { artist: "Heavy D & the Boyz", title: "Nuttin' But Love", mics: 4, year: 1994 },
+            { artist: "Jeru the Damaja", title: "The Sun Rises in the East", mics: 4, year: 1994 },
+            { artist: "Coolio", title: "It Takes a Thief", mics: 4, year: 1994 },
+            { artist: "MC Eiht", title: "We Come Strapped", mics: 4, year: 1994 },
+            { artist: "KRS-One", title: "KRS-One", mics: 4, year: 1995 },
+            { artist: "Cypress Hill", title: "III: Temples of Boom", mics: 4, year: 1995 },
+            { artist: "Coolio", title: "Gangsta's Paradise", mics: 4, year: 1995 },
+            { artist: "LL Cool J", title: "Mr. Smith", mics: 4, year: 1995 },
+            { artist: "Geto Boys", title: "The Resurrection", mics: 4, year: 1996 },
+            { artist: "E-40", title: "Tha Hall of Game", mics: 4, year: 1996 },
+            { artist: "Scarface", title: "The Untouchable", mics: 4, year: 1997 },
+            { artist: "Bone Thugs-n-Harmony", title: "The Art of War", mics: 4, year: 1997 },
+            { artist: "Tha Alkaholiks", title: "Likwidation", mics: 4, year: 1997 },
+            { artist: "Master P", title: "Ghetto D", mics: 4, year: 1997 },
+            { artist: "Scarface", title: "My Homies", mics: 4, year: 1998 },
+            { artist: "Daz Dillinger", title: "Retaliation, Revenge and Get Back", mics: 4, year: 1998 },
+            { artist: "Goodie Mob", title: "Still Standing", mics: 4, year: 1998 },
+            { artist: "WC", title: "The Shadiest One", mics: 4, year: 1998 },
+            { artist: "Mo Thugs", title: "Family Scriptures Chapter II: Family Reunion", mics: 4, year: 1998 },
+            { artist: "Master P", title: "MP Da Last Don", mics: 4, year: 1998 },
+            { artist: "N.O.R.E.", title: "N.O.R.E.", mics: 4, year: 1998 },
+            { artist: "Def Squad", title: "El Niño", mics: 4, year: 1998 },
+            { artist: "Fat Joe", title: "Don Cartagena", mics: 4, year: 1998 },
+            { artist: "E-40", title: "The Element of Surprise", mics: 4, year: 1998 },
+            { artist: "M.O.P.", title: "First Family 4 Life", mics: 4, year: 1998 },
+            { artist: "Mack 10", title: "The Recipe", mics: 4, year: 1998 },
+            { artist: "Twista", title: "Mobstability", mics: 4, year: 1998 },
+            { artist: "Juvenile", title: "400 Degreez", mics: 4, year: 1998 },
+            { artist: "Geto Boys", title: "Da Good Da Bad & Da Ugly", mics: 4, year: 1998 },
+            { artist: "DJ Quik", title: "Rhythm-al-ism", mics: 4, year: 1998 },
+            { artist: "Silkk the Shocker", title: "Made Man", mics: 4, year: 1999 },
+            { artist: "Prince Paul", title: "A Prince Among Thieves", mics: 4, year: 1999 },
+            { artist: "Too $hort", title: "Can't Stay Away", mics: 4, year: 1999 },
+            { artist: "Black Moon", title: "War Zone", mics: 4, year: 1999 },
+            { artist: "Big Mike", title: "Hard to Hit", mics: 4, year: 1999 },
+            { artist: "Heavy D", title: "Heavy", mics: 4, year: 1999 },
+            { artist: "EPMD", title: "Out of Business", mics: 4, year: 1999 },
+            { artist: "The Beatnuts", title: "A Musical Massacre", mics: 4, year: 1999 },
+            { artist: "Ol' Dirty Bastard", title: "Nigga Please", mics: 4, year: 1999 },
+            { artist: "Pharoahe Monch", title: "Internal Affairs", mics: 4, year: 1999 },
+            { artist: "Kurupt", title: "Tha Streetz Iz a Mutha", mics: 4, year: 1999 },
+            { artist: "Sticky Fingaz", title: "Black Trash: The Autobiography of Kirk Jones", mics: 4, year: 2001 },
+            { artist: "Tha Alkaholiks", title: "X.O. Experience", mics: 4, year: 2001 },
+            { artist: "Trick Daddy", title: "Thugs Are Us", mics: 4, year: 2001 },
+            { artist: "2Pac", title: "Until the End of Time", mics: 4, year: 2001 },
+            { artist: "Redman", title: "Malpractice", mics: 4, year: 2001 },
+            { artist: "Beanie Sigel", title: "The Reason", mics: 4, year: 2001 },
+            { artist: "P. Diddy & The Bad Boy Family", title: "The Saga Continues...", mics: 4, year: 2001 },
+            { artist: "Kurupt", title: "Space Boogie: Smoke Oddessey", mics: 4, year: 2001 },
+            { artist: "Foxy Brown", title: "Broken Silence", mics: 4, year: 2001 },
+            { artist: "Jadakiss", title: "Kiss tha Game Goodbye", mics: 4, year: 2001 },
+
+            // 3.5 Mics (Controversial ratings)
+            { artist: "Common", title: "Resurrection", mics: 3.5, year: 1994 },
+            { artist: "Souls of Mischief", title: "93 'til Infinity", mics: 3.5, year: 1993 },
+            { artist: "Bone Thugs-n-Harmony", title: "E. 1999 Eternal", mics: 3.5, year: 1995 },
+            { artist: "The Beatnuts", title: "The Beatnuts: Street Level", mics: 3.5, year: 1994 },
+
+            // 3 Mics (Solid, but some generated debate)
+            { artist: "Camp Lo", title: "Uptown Saturday Night", mics: 3, year: 1997 },
+            { artist: "Hieroglyphics", title: "3rd Eye Vision", mics: 3, year: 1998 },
+            { artist: "Smif-N-Wessun", title: "Dah Shinin'", mics: 3, year: 1995 },
+
+            // 2.5 Mics (Often considered harshly reviewed)
+            { artist: "Brotha Lynch Hung", title: "Season of da Siccness", mics: 2.5, year: 1995 },
+            { artist: "Lootpack", title: "Soundpieces: Da Antidote", mics: 2.5, year: 1999 },
+
+            // 2 Mics
+            { artist: "Eminem", title: "The Slim Shady LP", mics: 2, year: 1999 } // Infamous rating
+        ];
+
+        // Sort albums alphabetically by Artist, then by Album Title
+        albums.sort((a, b) => {
+            if (a.artist.toLowerCase() < b.artist.toLowerCase()) return -1;
+            if (a.artist.toLowerCase() > b.artist.toLowerCase()) return 1;
+            
+            // If artists are the same, sort by album title
+            if (a.title.toLowerCase() < b.title.toLowerCase()) return -1;
+            if (a.title.toLowerCase() > b.title.toLowerCase()) return 1;
+            return 0;
+        });
+
+        const gridContainer = document.getElementById('albumGrid');
+        const noResultsMsg = document.getElementById('noResults');
+
+        // Function to generate the HTML for mic icons based on rating
+        function renderMics(rating) {
+            const maxMics = 5;
+            let micsHTML = '';
+            // Basic SVG for a microphone (simplified)
+            const micIconFull = `<svg class="w-5 h-5 text-yellow-500 fill-current inline-block mr-1" viewBox="0 0 24 24"><path d="M12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3z"/><path d="M17 11c0 2.76-2.24 5-5 5s-5-2.24-5-5H5c0 3.53 2.61 6.43 6 6.92V21h2v-3.08c3.39-.49 6-3.39 6-6.92h-2z"/></svg>`;
+            const micIconHalf = `<svg class="w-5 h-5 text-yellow-500 fill-current inline-block mr-1" viewBox="0 0 24 24"><path d="M12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3z"/><path d="M17 11c0 2.76-2.24 5-5 5s-5-2.24-5-5H5c0 3.53 2.61 6.43 6 6.92V21h2v-3.08c3.39-.49 6-3.39 6-6.92h-2z" fill-opacity="0.5"/></svg>`; // Faked half opacity for illustration
+            const micIconEmpty = `<svg class="w-5 h-5 text-gray-300 fill-current inline-block mr-1" viewBox="0 0 24 24"><path d="M12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3z"/><path d="M17 11c0 2.76-2.24 5-5 5s-5-2.24-5-5H5c0 3.53 2.61 6.43 6 6.92V21h2v-3.08c3.39-.49 6-3.39 6-6.92h-2z"/></svg>`;
+
+            for (let i = 1; i <= maxMics; i++) {
+                if (rating >= i) {
+                    micsHTML += micIconFull;
+                } else if (rating === i - 0.5) {
+                    // For half mics (like 4.5)
+                    micsHTML += micIconHalf;
+                } else {
+                    micsHTML += micIconEmpty;
+                }
+            }
+            return micsHTML;
+        }
+
+        function displayAlbums(albumsToDisplay) {
+            gridContainer.innerHTML = '';
+            
+            if (albumsToDisplay.length === 0) {
+                noResultsMsg.classList.remove('hidden');
+            } else {
+                noResultsMsg.classList.add('hidden');
+                
+                albumsToDisplay.forEach(album => {
+                    const card = document.createElement('div');
+                    card.className = 'bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-shadow duration-300 border border-gray-100 flex flex-col h-full transform hover:-translate-y-1';
+                    
+                    // Assign a color bar based on rating
+                    let ratingColor = 'bg-gray-500';
+                    if (album.mics === 5) ratingColor = 'bg-yellow-500';
+                    else if (album.mics === 4.5) ratingColor = 'bg-orange-500';
+                    else if (album.mics === 4) ratingColor = 'bg-blue-500';
+                    else if (album.mics === 3.5) ratingColor = 'bg-teal-500';
+                    else if (album.mics === 3) ratingColor = 'bg-green-500';
+                    else if (album.mics === 2.5) ratingColor = 'bg-red-400';
+                    else if (album.mics <= 2) ratingColor = 'bg-red-600';
+
+                    card.innerHTML = `
+                        <div class="h-2 w-full ${ratingColor}"></div>
+                        <div class="p-6 flex-grow flex flex-col">
+                            <h3 class="text-xl font-bold text-gray-900 mb-1 leading-tight">${album.title}</h3>
+                            <h4 class="text-md text-gray-600 mb-4">${album.artist}</h4>
+                            
+                            <div class="mt-auto">
+                                <div class="flex items-center justify-between mb-2">
+                                    <span class="text-sm font-semibold text-gray-500">Rating</span>
+                                    <span class="text-sm font-bold text-gray-900 bg-gray-100 px-2 py-1 rounded-full">${album.mics} Mics</span>
+                                </div>
+                                <div class="flex items-center" title="${album.mics} Mics">
+                                    ${renderMics(album.mics)}
+                                </div>
+                                <div class="text-xs text-gray-400 mt-4 text-right">Released: ${album.year}</div>
+                            </div>
+                        </div>
+                    `;
+                    gridContainer.appendChild(card);
+                });
+            }
+        }
+
+        // Filter and Search Logic
+        const inputArtist = document.getElementById('searchArtist');
+        const inputAlbum = document.getElementById('searchAlbum');
+        const selectMic = document.getElementById('filterMic');
+
+        function filterData() {
+            const artistQuery = inputArtist.value.toLowerCase();
+            const albumQuery = inputAlbum.value.toLowerCase();
+            const micFilter = selectMic.value;
+
+            const filtered = albums.filter(album => {
+                const matchesArtist = album.artist.toLowerCase().includes(artistQuery);
+                const matchesAlbum = album.title.toLowerCase().includes(albumQuery);
+                const matchesMic = micFilter === 'all' || album.mics.toString() === micFilter;
+
+                return matchesArtist && matchesAlbum && matchesMic;
+            });
+
+            displayAlbums(filtered);
+        }
+
+        // Add event listeners
+        inputArtist.addEventListener('input', filterData);
+        inputAlbum.addEventListener('input', filterData);
+        selectMic.addEventListener('change', filterData);
+
+        // Initial render
+        displayAlbums(albums);
+
+    </script>
+</body>
+</html>
